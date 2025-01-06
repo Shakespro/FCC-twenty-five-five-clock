@@ -1,47 +1,132 @@
 .clock {
   max-width: 700px;
   margin: 0 auto;
-  height: 100vh;
+  height: auto; /* Allow height to adjust based on content */
+  min-height: 100vh; /* Ensure it covers the full viewport height */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(135deg, #f0f4f8, #c9d6e3);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow: hidden; /* Prevent overflow */
 }
 
 .setters {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  text-align: center
+  text-align: center;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
 button {
-  margin: 20px;
+  margin: 10px;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
-  background-color: #2222aa;
+  border-radius: 25px;
+  background-color: #4a90e2;
   color: white;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #357ab8;
+  transform: translateY(-2px);
 }
 
 h4 {
-  font-size: 30px;
+  font-size: 28px;
   margin-top: 20px;
+  color: #333;
 }
 
 span {
-  font-size: 24px
+  font-size: 36px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .display {
   text-align: center;
-  margin-top: 20px
+  margin-top: 20px;
+  border: 2px solid #4a90e2;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  max-width: 90%; /* Set max-width to prevent overflow */
+  box-sizing: border-box; /* Include padding in width */
 }
 
 h2 {
-  color : blue
+  color: #4a90e2;
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center; /* Center the text horizontally */
 }
 
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .clock {
+    padding: 15px;
+    min-height: 100vh; /* Ensure it covers the full viewport height */
+  }
 
+  h2 {
+    font-size: 28px;
+  }
 
+  h4 {
+    font-size: 24px;
+  }
+
+  span {
+    font-size: 30px;
+  }
+
+  button {
+    padding: 8px 15px;
+    margin: 5px;
+    font-size: 16px;
+  }
+
+  .setters {
+    flex-direction: column; /* Stack setters vertically on small screens */
+    align-items: center; /* Center align items */
+  }
+}
+
+/* Landscape Mode */
+@media (orientation: landscape) and (max-width: 1000px) {
+  .clock {
+    padding-top: 200px; /* Adjust top padding to reduce space */
+    padding-bottom: 20px; /* Adjust bottom padding to reduce space */
+  }
+  
+  .setters {
+    flex-direction: row; /* Keep setters in a row for landscape */
+  }
+
+  button {
+    width: 45%; /* Make buttons wider */
+  }
+
+  h2 {
+    font-size: 30px; /* Slightly larger title */
+  }
+
+  h4 {
+    font-size: 22px; /* Adjust heading size */
+  }
+
+  span {
+    font-size: 32px; /* Adjust display size */
+  }
+
+  .display {
+    max-width: 90%; /* Ensure display stays within bounds */
+  }
+}
